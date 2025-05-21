@@ -5,7 +5,7 @@ int main() {
     int codigo, populacao, pontos;
     float pib, area, densidade, pib_per_capita;
 
-    // Entrada
+    
     printf("Estado: ");
     scanf(" %[^\n]", estado);
 
@@ -27,7 +27,7 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos);
 
-    // Cálculos com verificação
+    
     if (area > 0)
         densidade = populacao / area;
     else
@@ -38,7 +38,7 @@ int main() {
     else
         pib_per_capita = 0;
 
-    // Saída
+    
     printf("\n--- Carta Cadastrada ---\n");
     printf("Estado: %s\n", estado);
     printf("Cidade: %s\n", cidade);
