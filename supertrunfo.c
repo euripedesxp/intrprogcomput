@@ -1,60 +1,54 @@
-//
-// Created by euripedes on 20/05/25 on CLion
-//
 #include <stdio.h>
 
-#define MAX 5
-
 int main() {
-    char estado[MAX][30], cidade[MAX][30];
-    int codigo[MAX], populacao[MAX], pontos[MAX];
-    float pib[MAX], area[MAX], densidade[MAX], pib_per_capita[MAX];
-    int n, i;
+    char estado[30], cidade[30];
+    int codigo, populacao, pontos;
+    float pib, area, densidade, pib_per_capita;
 
-    printf("Quantas cartas deseja cadastrar? (máx %d): ", MAX);
-    scanf("%d", &n);
+    // Entrada
+    printf("Estado: ");
+    scanf(" %[^\n]", estado);
 
-    for (i = 0; i < n; i++) {
-        printf("\nCarta %d:\n", i + 1);
+    printf("Cidade: ");
+    scanf(" %[^\n]", cidade);
 
-        printf("Estado: ");
-        scanf(" %[^\n]", estado[i]);
+    printf("Código: ");
+    scanf("%d", &codigo);
 
-        printf("Cidade: ");
-        scanf(" %[^\n]", cidade[i]);
+    printf("População: ");
+    scanf("%d", &populacao);
 
-        printf("Código: ");
-        scanf("%d", &codigo[i]);
+    printf("PIB (em bilhões): ");
+    scanf("%f", &pib);
 
-        printf("População: ");
-        scanf("%d", &populacao[i]);
+    printf("Área (km²): ");
+    scanf("%f", &area);
 
-        printf("PIB (em bilhões): ");
-        scanf("%f", &pib[i]);
+    printf("Pontos turísticos: ");
+    scanf("%d", &pontos);
 
-        printf("Área (km²): ");
-        scanf("%f", &area[i]);
+    // Cálculos com verificação
+    if (area > 0)
+        densidade = populacao / area;
+    else
+        densidade = 0;
 
-        printf("Pontos turísticos: ");
-        scanf("%d", &pontos[i]);
+    if (populacao > 0)
+        pib_per_capita = (pib * 1000000000) / populacao;
+    else
+        pib_per_capita = 0;
 
-        densidade[i] = populacao[i] / area[i];
-        pib_per_capita[i] = (pib[i] * 1000000000) / populacao[i];
-    }
-
-    printf("\n--- Cartas Cadastradas ---\n");
-    for (i = 0; i < n; i++) {
-        printf("\nCarta %d:\n", i + 1);
-        printf("Estado: %s\n", estado[i]);
-        printf("Cidade: %s\n", cidade[i]);
-        printf("Código: %d\n", codigo[i]);
-        printf("População: %d\n", populacao[i]);
-        printf("PIB: R$ %.2f bilhões\n", pib[i]);
-        printf("Área: %.2f km²\n", area[i]);
-        printf("Pontos turísticos: %d\n", pontos[i]);
-        printf("Densidade: %.2f hab/km²\n", densidade[i]);
-        printf("PIB per capita: R$ %.2f\n", pib_per_capita[i]);
-    }
+    // Saída
+    printf("\n--- Carta Cadastrada ---\n");
+    printf("Estado: %s\n", estado);
+    printf("Cidade: %s\n", cidade);
+    printf("Código: %d\n", codigo);
+    printf("População: %d\n", populacao);
+    printf("PIB: R$ %.2f bilhões\n", pib);
+    printf("Área: %.2f km²\n", area);
+    printf("Pontos turísticos: %d\n", pontos);
+    printf("Densidade: %.2f hab/km²\n", densidade);
+    printf("PIB per capita: R$ %.2f\n", pib_per_capita);
 
     return 0;
 }
